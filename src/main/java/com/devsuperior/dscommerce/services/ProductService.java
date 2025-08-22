@@ -53,7 +53,7 @@ public class ProductService {
 			return new ProductDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Recurso não encontrado");
+			throw new ResourceNotFoundException("Resource not found");
 		}
 
 	}
@@ -61,13 +61,13 @@ public class ProductService {
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
 		if (!repository.existsById(id)) {
-			throw new ResourceNotFoundException("Recurso não encontrado");
+			throw new ResourceNotFoundException("Resource not found");
 		}
 		try {
 			repository.deleteById(id);
 		}
 		catch (DataIntegrityViolationException e) {
-			throw new DatabaseException("Falha de integridade referencial");
+			throw new DatabaseException("Referential integrity failure");
 		}
 		
 	}
