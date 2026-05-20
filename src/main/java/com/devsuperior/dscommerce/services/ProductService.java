@@ -27,7 +27,7 @@ public class ProductService {
 
 	@Transactional(readOnly = true)
 	public ProductDTO findById(Long id) {
-		return new ProductDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Resource not found")));
+		return new ProductDTO(repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado")));
 	}
 	
 	@Transactional(readOnly = true)
@@ -53,7 +53,7 @@ public class ProductService {
 			return new ProductDTO(entity);
 		}
 		catch (EntityNotFoundException e) {
-			throw new ResourceNotFoundException("Resource not found");
+			throw new ResourceNotFoundException("Recurso não encontrado");
 		}
 
 	}
@@ -61,13 +61,13 @@ public class ProductService {
 	@Transactional(propagation = Propagation.SUPPORTS)
 	public void delete(Long id) {
 		if (!repository.existsById(id)) {
-			throw new ResourceNotFoundException("Resource not found");
+			throw new ResourceNotFoundException("Recurso não encontrado");
 		}
 		try {
 			repository.deleteById(id);
 		}
 		catch (DataIntegrityViolationException e) {
-			throw new DatabaseException("Referential integrity failure");
+			throw new DatabaseException("Falha de integridade referencial");
 		}
 		
 	}

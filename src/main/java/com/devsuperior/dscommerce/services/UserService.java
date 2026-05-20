@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		List<UserDetailsProjection> result = repository.searchUserAndRolesByEmail(username);
 		if (result.size() == 0) {
-			throw new UsernameNotFoundException("Email not found.");
+			throw new UsernameNotFoundException("Email não encontrado");
 		}
 		User user = new User();
 		user.setEmail(result.get(0).getUsername());
@@ -47,7 +47,7 @@ public class UserService implements UserDetailsService {
 			User user = repository.findByEmail(username).get();
 			return user;
 		} catch (Exception e) {
-			throw new UsernameNotFoundException("Email not found");
+			throw new UsernameNotFoundException("Email não encontrado");
 		}
 	}
 	
