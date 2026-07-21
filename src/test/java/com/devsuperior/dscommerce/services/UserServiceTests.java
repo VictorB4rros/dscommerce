@@ -4,7 +4,6 @@ import com.devsuperior.dscommerce.dto.UserDTO;
 import com.devsuperior.dscommerce.entities.User;
 import com.devsuperior.dscommerce.projections.UserDetailsProjection;
 import com.devsuperior.dscommerce.repositories.UserRepository;
-import com.devsuperior.dscommerce.services.exceptions.DatabaseException;
 import com.devsuperior.dscommerce.tests.UserDetailsFactory;
 import com.devsuperior.dscommerce.tests.UserFactory;
 import com.devsuperior.dscommerce.utils.CustomUserUtil;
